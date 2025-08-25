@@ -1,15 +1,23 @@
 import React from "react";
-
+import NewTask from "../Components/NewTask"
+import { useState } from "react";
+import TodoItem from "../Components/TodoItem";
 function Homepage() {
+  const [todos, setTodos] = useState([]);
+  const addTask = (task) => {
+    setTodos((prevTodos) => [...prevTodos, task]);
+    console.log(todos);
+  };
   return (
     <>
-      <h1 className="font-bold text-2xl mb-3">Home</h1>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas
-        perspiciatis quibusdam fuga laborum, veniam tenetur nihil deserunt quo
-        natus minus ad aut quis voluptates excepturi aliquam possimus maxime
-        blanditiis sequi.
-      </p>
+     <NewTask addTask={addTask} />
+     <ul className="bg-gray-200 rounded-md shadow-sm p-4">
+      {
+        todos.map((todo, i) => 
+        <TodoItem key={i} id={i} todo={todo}/>
+        )
+      }
+     </ul>
     </>
   );
 }
