@@ -4,19 +4,34 @@ import { FaPen, FaTrashCan } from "react-icons/fa6";
 function TodoItem(props) {
   const dialog = React.useRef();
   const [editing, setEditing] = React.useState(false);
+  const [title, setTitle]  = React.useState(props.todo.title);
   const openModal = (isEditing) => {
     isEditing ? setEditing(true) : setEditing(false);
     console.log(isEditing);
     dialog.current.showModal();
-    
   };
-  const closeModal = () => [ dialog.current.close()]
+  const closeModal = () => [dialog.current.close()];
   const clickOutside = (e) => {
     if (e.target === dialog.current) {
       closeModal();
     }
-}
-return (
+  };
+  const submitform = (e) => {
+    e.preventDefault();
+    if(editing){
+      const task = {
+      title: title,
+      date: new Date().toLocaleString(),
+    } 
+    console.log(task);
+    props.updateTask(task,props.id);
+    }
+    else{
+      props.deleteTask(props.id);
+    };
+    closeModal();
+  };
+  return (
     <>
       <li className="flex bg-white rounded shadow-sm p-4 mt-4 first:mt-0">
         <div className="flex gap-x-4 mr-auto items-center">
@@ -45,8 +60,12 @@ return (
           </button>
         </div>
       </li>
-      <dialog ref={dialog} onClick ={clickOutside} className="rounded-md w-[480px] fixed top-1/5 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-        <form className="p-6">
+      <dialog
+        ref={dialog}
+        onClick={clickOutside}
+        className="rounded-md w-[480px] fixed top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+      >
+        <form onSubmit={submitform} className="p-6">
           <h3 className="font-semibold text-xl text-center">
             Modal
             <div className="text-center">
@@ -54,7 +73,22 @@ return (
             </div>
           </h3>
           <div className="mt-2 text-center">
-            {editing ? "edit" : "Will you delete the task permanently?"}
+            {editing ? (
+              <input
+                id="title"
+                type="text"
+                className="focus:outline-none w-full border rounded py-2 px-3"
+                maxLength="30"
+                placeholder="Type Something here..."
+                autoFocus
+                required
+              
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            ) : (
+              "Will you delete the task permanently?"
+            )}
           </div>
           <div className="mt-2 text-end space-x-2">
             <button
