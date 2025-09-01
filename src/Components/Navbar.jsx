@@ -10,8 +10,8 @@ function Navbar() {
   return (
     <header>
       <div className="flex mr-auto gap-x-2 font-semibold text-2xl">
-        <Link to='/'>
-        <img src={reactLogo} alt="React Logo" />
+        <Link to="/">
+          <img src={reactLogo} alt="React Logo" />
         </Link>
         React : TODO List
       </div>
@@ -25,7 +25,9 @@ function Navbar() {
           <NavLink to="/about" className={activeLink}>
             About
           </NavLink>
-          
+          <NavLink to="/products" className={activeLink}>
+            Products
+          </NavLink>
         </li>
       </ul>
     </header>

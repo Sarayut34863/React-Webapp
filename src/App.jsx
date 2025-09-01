@@ -5,6 +5,7 @@ import MainLayout from "./Layouts/MainLayout";
 import Homepage from "./Pages/HomePage";
 import AboutPage from "./Pages/AboutPage";
 import NotFound from "./Pages/NotFound";
+import ProductPage from './Pages/productPage';
 import {
   Route,
   createBrowserRouter,
@@ -19,6 +20,7 @@ function App() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Homepage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/products" element={<ProductPage />} />
         
         <Route path="*" element={<NotFound />} />
       </Route>
