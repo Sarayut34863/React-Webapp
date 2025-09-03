@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { Outlet } from "react-router-dom";
 import { Slide, ToastContainer} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
+
 function MainLayout() {
   return (
     <>

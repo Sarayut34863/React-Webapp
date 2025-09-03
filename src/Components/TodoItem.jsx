@@ -95,7 +95,7 @@ function TodoItem(props) {
               type="submit"
               className={
                 editing
-                  ? "rounded bg-teal-500 border border-gray-200 px-3 py-2 text-white hover:bg-teal-600 "
+                  ? "rounded bg-teal-500 border border-gray-200 px-3 py-2 text-white hover:bg-teal-600 " 
                   : "rounded bg-rose-500 border border-gray-200 px-3 py-2 text-white hover:bg-rose-600 "
               }
             >
