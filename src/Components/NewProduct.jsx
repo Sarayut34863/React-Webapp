@@ -11,7 +11,7 @@ function NewProduct() {
   const openDialog = () => dialog.current.showModal();
   const closeDialog = () => dialog.current.close();
   const handleSubmit = (e) => {};
-  const handleChange = (e) => {}
+  const handleChange = (e) => {};
   return (
     <>
       <button
@@ -75,16 +75,21 @@ function NewProduct() {
               required
             />
           </div>
-          
+
           <div className="mt-6 text-right space-x-2">
-            <button className="rounded border border-gray-200 px-3 py-2 hover:bg-gray-50" onClick={closeDialog}>
-                Add product
+            <button
+              className="rounded border border-teal-500 px-3 py-2 hover:bg-teal-600"
+              onClick={closeDialog}
+            >
+              Add product
             </button>
 
-            <button className="rounded border border-gray-200 px-3 py-2 hover:bg-gray-50" onClick={closeDialog}>
-                close
+            <button
+              className="rounded border border-rose-500 px-3 py-2 hover:bg-rose-600"
+              onClick={closeDialog}
+            >
+              close
             </button>
-
           </div>
         </form>
       </dialog>
